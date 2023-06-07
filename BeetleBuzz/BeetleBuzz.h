@@ -59,7 +59,8 @@ namespace BeetleBuzz {
 			{ChatCommand("!MyColor", std::bind(&BeetleBuzz::personalColorCmd, this, std::placeholders::_1, std::placeholders::_2)) , CommandState(1s) },
 			{ChatCommand("!MyElement", std::bind(&BeetleBuzz::personalElementCmd, this, std::placeholders::_1, std::placeholders::_2)) , CommandState(1s) },
 			{ChatCommand("!MyFortune", std::bind(&BeetleBuzz::dailyFortuneCmd, this, std::placeholders::_1, std::placeholders::_2)) , CommandState(1s)},
-			{ChatCommand("!PickOne", std::bind(&BeetleBuzz::pickOneCmd, this, std::placeholders::_1, std::placeholders::_2)) , CommandState(1s)}
+			{ChatCommand("!PickOne", std::bind(&BeetleBuzz::pickOneCmd, this, std::placeholders::_1, std::placeholders::_2)) , CommandState(1s)},
+			{ChatCommand("!MyAnimal", std::bind(&BeetleBuzz::personalAnimalCommand, this, std::placeholders::_1, std::placeholders::_2)) , CommandState(1s)}
 		};
 
 		CommandSearchTree searchTree;
@@ -90,6 +91,8 @@ namespace BeetleBuzz {
 		bool personalColorCmd(TTV::Message& input, CommandState& cmdState);
 		bool dailyFortuneCmd(TTV::Message& input, CommandState& cmdState);
 		bool pickOneCmd(TTV::Message& input, CommandState& cmdState);
+		bool personalAnimalCommand(TTV::Message& input, CommandState& cmdState); 
+
 
 		struct {
 			uint32_t msgCount = 0u;

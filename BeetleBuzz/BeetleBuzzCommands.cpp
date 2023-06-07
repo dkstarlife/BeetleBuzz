@@ -149,11 +149,37 @@ namespace BeetleBuzz {
 				break;
 		}
 
+		if (options.size() < 2)
+			return false;
+
 		uint32_t seed = static_cast<uint32_t>(std::chrono::system_clock::now().time_since_epoch().count());
 
 		std::stringstream ss;
 		ss << '@' << input.getSenderName(); //@username
 		ss << " Option picked: " << options[DKUtil::wellonsHash(seed) % options.size()];
+
+		//actionQueue.emplace(ActionType::SEND_MSG, new TTV::Message("", "", TTV::msgID::PRIVMSG, input.channel, ss.str()));
+		privmsgSendQueue.emplace("", "", TTV::msgID::PRIVMSG, input.channel, ss.str());
+
+		return true;
+	}
+
+	bool BeetleBuzz::personalAnimalCommand(TTV::Message& input, CommandState& cmdState) {
+
+		//🐶🐺🐱🦁🐯🦒🦊🦝🐗🐭🐹🐻🐨🐼🐸🐴🦄🐔
+		//🐒🦍🦧🐆🐎🦌🦏🦛🐂🐃🐄🐖🐏🐑🐐🐪🐫🦙🦘🦥🦨🦡🐘🐁🐀🦔🐇🐿🦎🐊🐢🐍🐉🦕🦖🦦🦈🐬🐳🐟🐠🐡🦐🦑🐙🦞🦀🦆🐓🦃🦅🕊🦢🦜🦩🦚🦉🐦🐧🦇🦋🐌🐛🦟🦗🐜🐝🐞🦂🕷👽
+		//Pick an animal emoji based on username. 
+		std::vector<std::string> animals{ "🐶","🐺","🐱","🦁","🐯","🦒","🦊","🦝","🐗","🐭","🐹","🐻","🐨","🐼","🐸","🐴","🦄","🐔",
+			"🐒", "🦍", "🦧", "🐆", "🐎", "🦌", "🦏", "🦛", "🐂", "🐃", "🐄", "🐖", "🐏", "🐑", "🐐", "🐪", "🐫", "🦙", "🦘", "🦥", "🦨", "🦡", "🐘", "🐁", "🐀", "🦔", "🐇", "🐿",
+			"🦎", "🐊", "🐢", "🐍", "🐉", "🦕", "🦖", "🦦", "🦈", "🐬", "🐳", "🐟", "🐠", "🐡", "🦐", "🦑", "🐙", "🦞", "🦀", "🦆", "🐓", "🦃", "🦅", "🕊", "🦢", "🦜", "🦩", "🦚", "🦉", "🐦", "🐧",
+			"🦇", "🦋", "🐌", "🐛", "🦟", "🦗", "🐜", "🐝", "🐞", "🦂", "🕷", "👽" 
+		};
+
+		const std::string_view name{ input.getSenderName() };
+		uint32_t seed{ usernameToSeed(name) * 4141u };
+
+		std::stringstream ss;
+		ss << '@' << name << " Your animal is: " << animals[DKUtil::wellonsHash(seed) % animals.size()];
 
 		//actionQueue.emplace(ActionType::SEND_MSG, new TTV::Message("", "", TTV::msgID::PRIVMSG, input.channel, ss.str()));
 		privmsgSendQueue.emplace("", "", TTV::msgID::PRIVMSG, input.channel, ss.str());
