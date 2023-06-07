@@ -27,4 +27,4 @@ Current implemented commands (not case sensitive):
       🌌 Aether 🌌
 - `!MyFortune` picks a fortune cookie fortune from a list, using a hash of the day and callers username.
 - `PickOne a | b | c ...` takes 2 or more options separated by '|' symbols, and randomly picks one and responds with it. 
-- `!MyAnimal` picks a random animal emoji based on the caller's name, and responds with it.
+- `!MyAnimal` picks a random animal emoji based on a hash of the caller's name, and responds with it.
