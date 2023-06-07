@@ -1,6 +1,6 @@
 # BeetleBuzz
 
-BeetleBuzz is a simple chat bot for Twitch.tv, which is written in C++.
+BeetleBuzz is a simple chat bot for Twitch.tv, written in C++.
 
 This is a small recreational coding project and as such may have messy code, and it may not get many future updates.
 Feel free to use the code for what ever you may feel like.
