@@ -26,4 +26,4 @@ Current implemented commands (not case sensitive):
 			🌊 Water 🌊, ☁ Steam ☁, ❄ Ice ❄,
       🌌 Aether 🌌
 - `!MyFortune` picks a fortune cookie fortune from a list, using a hash of the day and callers username.
-- `PickOne a | b | c ...` takes 1 or more options separated by '|' symbols, and randomly picks one and responds with it. 
+- `PickOne a | b | c ...` takes 2 or more options separated by '|' symbols, and randomly picks one and responds with it. 
